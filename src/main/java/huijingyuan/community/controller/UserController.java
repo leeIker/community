@@ -1,5 +1,7 @@
 package huijingyuan.community.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +39,11 @@ public class UserController {
 			return userDtoTwo;
 		}
 		return null;
+	}
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public ArrayList<UserDto> queryAllUser(){
+		ArrayList<UserDto> list=userDao.qeruyAllUser();
+		return list;
 	}
 }
