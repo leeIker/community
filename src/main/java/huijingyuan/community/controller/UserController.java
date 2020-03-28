@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import huijingyuan.community.dao.UserDao;
 import huijingyuan.community.dto.UserDto;
 import huijingyuan.community.service.UserService;
-@CrossOrigin
 @Controller
 @RequestMapping("user")
 public class UserController {
