@@ -38,7 +38,10 @@ public class UserController {
 			System.out.println(userDtoTwo);
 			return userDtoTwo;
 		}
-		return null;
+		UserDto userT= new UserDto();
+		userT.setName("sisiter");
+		userT.setPassword("monster");
+		return userT;
 	}
 	@RequestMapping("queryAll")
 	@ResponseBody
