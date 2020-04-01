@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,7 +33,7 @@ public class UserController {
 	}
 	@ResponseBody
 	@RequestMapping("login")
-	public UserDto login(UserDto userDto) {
+	public UserDto login(@RequestBody UserDto userDto) {
 		UserDto userDtoTwo =userDao.queryUser(userDto);
 		if(userDtoTwo!=null) {
 			System.out.println(userDtoTwo);
