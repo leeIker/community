@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,23 +33,21 @@ public class UserController {
 		}
 		return null;
 	}
-	@ResponseBody
 	@RequestMapping("login")
-	public UserDto login(@RequestBody UserDto userDto) {
+	public ResponseEntity login(@RequestBody UserDto userDto) {
 		UserDto userDtoTwo =userDao.queryUser(userDto);
 		if(userDtoTwo!=null) {
+			ResponseEntity rn= new ResponseEntity(userDtoTwo,HttpStatus.OK);
 			System.out.println(userDtoTwo);
-			return userDtoTwo;
+			return  rn;
 		}
-		UserDto userT= new UserDto();
-		userT.setName("sisiter");
-		userT.setPassword("monster");
-		return userT;
+		ResponseEntity rn= new ResponseEntity(HttpStatus.PRECONDITION_FAILED);
+		return rn;
 	}
 	@RequestMapping("queryAll")
-	@ResponseBody
-	public ArrayList<UserDto> queryAllUser(){
+	public ResponseEntity queryAllUser(){
 		ArrayList<UserDto> list=userDao.qeruyAllUser();
-		return list;
+		ResponseEntity rn= new ResponseEntity(list,HttpStatus.OK);
+		return rn;
 	}
 }
