@@ -41,7 +41,7 @@ public class UserController {
 			System.out.println(userDtoTwo);
 			return  rn;
 		}
-		ResponseEntity rn= new ResponseEntity(HttpStatus.PRECONDITION_FAILED);
+		ResponseEntity rn= new ResponseEntity(HttpStatus.NO_CONTENT);
 		return rn;
 	}
 	@RequestMapping("queryAll")
