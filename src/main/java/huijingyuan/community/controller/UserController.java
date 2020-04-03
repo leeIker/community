@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,8 +46,12 @@ public class UserController {
 		return rn;
 	}
 	@RequestMapping("queryAll")
-	public ResponseEntity queryAllUser(){
-		ArrayList<UserDto> list=userDao.qeruyAllUser();
+	public ResponseEntity queryAllUser(@RequestHeader("Authorization") String token){
+		if(token==null) {
+			return new ResponseEntity(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+		}
+		
+		ArrayList<UserDto> list=userService.queryAllUser(token);
 		ResponseEntity rn= new ResponseEntity(list,HttpStatus.OK);
 		return rn;
 	}

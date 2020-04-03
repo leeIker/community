@@ -1,5 +1,7 @@
 package huijingyuan.community.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,17 @@ public class UserService {
 			return userDtoTwo;
 		}
 		return null;
+	}
+	
+	public ArrayList<UserDto> queryAllUser(String token) {
+		UserDto user= userDao.queryUserByToken(token);
+		if(user==null) {
+			return null;
+		}
+		ArrayList<UserDto> list=userDao.qeruyAllUser();
+		
+		return list;
+		
+		
 	}
 }
