@@ -16,4 +16,6 @@ public interface UserDao {
 	public UserDto queryUser(UserDto userDto);
 	@Select("select * from user")
 	public ArrayList<UserDto> qeruyAllUser();
+	@Select("select * frm user where usertoken =#{token}")
+	public UserDto queryUserByToken(String token);
 }
