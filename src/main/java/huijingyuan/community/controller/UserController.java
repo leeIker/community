@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -46,13 +47,11 @@ public class UserController {
 		return rn;
 	}
 	@RequestMapping("queryAll")
-	public ResponseEntity queryAllUser(@RequestHeader("Authorization") String token){
-		if(token==null) {
-			return new ResponseEntity(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
-		}
+	public ResponseEntity queryAllUser(@RequestHeader HttpHeaders header){
+			List<String> connection= header.get("Authorization");
+		    String token=connection.get(0);
+		    ArrayList<UserDto> users=userService.queryAllUser(token);
+			return new ResponseEntity(users,HttpStatus.NO_CONTENT);
 		
-		ArrayList<UserDto> list=userService.queryAllUser(token);
-		ResponseEntity rn= new ResponseEntity(list,HttpStatus.OK);
-		return rn;
 	}
 }
