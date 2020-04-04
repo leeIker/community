@@ -55,7 +55,7 @@ public class UserController {
 		    	return new ResponseEntity(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
 		    }
 		    ArrayList<UserDto> users=userService.queryAllUser(token);
-			return new ResponseEntity(users,HttpStatus.NO_CONTENT);
+			return new ResponseEntity(users,HttpStatus.OK);
 		
 	}
 }
