@@ -50,6 +50,10 @@ public class UserController {
 	public ResponseEntity queryAllUser(@RequestHeader HttpHeaders header){
 			List<String> connection= header.get("Authorization");
 		    String token=connection.get(0);
+		    System.out.println(token);
+		    if(token==null) {
+		    	return new ResponseEntity(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+		    }
 		    ArrayList<UserDto> users=userService.queryAllUser(token);
 			return new ResponseEntity(users,HttpStatus.NO_CONTENT);
 		
