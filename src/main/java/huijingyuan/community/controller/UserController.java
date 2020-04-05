@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import huijingyuan.community.dao.UserDao;
+import huijingyuan.community.dto.UserData;
 import huijingyuan.community.dto.UserDto;
 import huijingyuan.community.service.UserService;
 @Controller
@@ -57,5 +58,11 @@ public class UserController {
 		    ArrayList<UserDto> users=userService.queryAllUser(token);
 			return new ResponseEntity(users,HttpStatus.OK);
 		
+	}
+	@RequestMapping("queryUserByPage")
+	public ResponseEntity queryUserByPage(@RequestBody UserData userData) {
+		
+		UserData userDataTwo= userService.queryAll(userData.getCurrentPage(),userData.getPageSize());
+		return new ResponseEntity(userDataTwo,HttpStatus.OK);
 	}
 }

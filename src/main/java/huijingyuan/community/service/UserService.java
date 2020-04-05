@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import huijingyuan.community.dao.UserDao;
+import huijingyuan.community.dto.UserData;
 import huijingyuan.community.dto.UserDto;
 @Service
 public class UserService {
@@ -29,10 +30,28 @@ public class UserService {
 		if(user==null) {
 			return null;
 		}
-		ArrayList<UserDto> list=userDao.qeruyAllUser();
+		ArrayList<UserDto> list=userDao.queryAllUser();
 		
 		return list;
 		
 		
 	}
+	
+	public UserData queryAll(int currentPage,int pageSize) {
+		UserData userData=new UserData();
+		ArrayList<UserDto> users= userDao.queryUserByPage((currentPage-1)*pageSize, pageSize);
+		int totalCount=userDao.queryCount();
+		userData.setUserDto(users);
+		userData.setTotalCount(totalCount);
+		userData.setPageSize(pageSize);
+		userData.setCurrentPage(currentPage);
+		if(totalCount%pageSize==0) {
+			userData.setTatalPage(totalCount/pageSize);
+		}else {
+			userData.setTatalPage(totalCount/pageSize+1);
+		}
+		return userData;
+	}
+	
+	
 }

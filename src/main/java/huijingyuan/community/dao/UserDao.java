@@ -15,7 +15,11 @@ public interface UserDao {
 	@Select("select * from user where name=#{name} and password=#{password}")
 	public UserDto queryUser(UserDto userDto);
 	@Select("select * from user")
-	public ArrayList<UserDto> qeruyAllUser();
+	public ArrayList<UserDto> queryAllUser();
 	@Select("select * from user where usertoken =#{token}")
 	public UserDto queryUserByToken(String token);
+	@Select("select count(1) from user")
+	public int queryCount();
+	@Select("select * from user limit #{page},#{pageSize}")
+	public ArrayList<UserDto> queryUserByPage(int page,int pageSize);
 }
