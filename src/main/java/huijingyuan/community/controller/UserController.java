@@ -61,7 +61,7 @@ public class UserController {
 		
 	}
 	@RequestMapping("queryUserByPage")
-	public ResponseEntity queryUserByPage(UserData userData) {
+	public ResponseEntity queryUserByPage(@RequestBody UserData userData) {
 		
 		UserData userDataTwo= userService.queryAll(userData.getSearchContent(),userData.getCurrentPage(),userData.getPageSize());
 		return new ResponseEntity(userDataTwo,HttpStatus.OK);
