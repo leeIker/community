@@ -37,9 +37,10 @@ public class UserService {
 		
 	}
 	
-	public UserData queryAll(int currentPage,int pageSize) {
+	public UserData queryAll( String content,int currentPage,int pageSize) {
 		UserData userData=new UserData();
-		ArrayList<UserDto> users= userDao.queryUserByPage((currentPage-1)*pageSize, pageSize);
+		String contentT="%"+content+"%";
+		ArrayList<UserDto> users= userDao.queryUserByPage(contentT,(currentPage-1)*pageSize, pageSize);
 		int totalCount=userDao.queryCount();
 		userData.setUserDto(users);
 		userData.setTotalCount(totalCount);

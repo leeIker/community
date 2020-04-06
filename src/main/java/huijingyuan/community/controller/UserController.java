@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,9 +61,18 @@ public class UserController {
 		
 	}
 	@RequestMapping("queryUserByPage")
-	public ResponseEntity queryUserByPage(@RequestBody UserData userData) {
+	public ResponseEntity queryUserByPage(UserData userData) {
 		
-		UserData userDataTwo= userService.queryAll(userData.getCurrentPage(),userData.getPageSize());
+		UserData userDataTwo= userService.queryAll(userData.getSearchContent(),userData.getCurrentPage(),userData.getPageSize());
 		return new ResponseEntity(userDataTwo,HttpStatus.OK);
 	}
+	
+	@RequestMapping("queryUserBySearch{content}")
+	public ResponseEntity queryYserBySearch(@PathVariable(value="content") String content) {
+		
+		return null;
+	}
+	
+	
+	
 }

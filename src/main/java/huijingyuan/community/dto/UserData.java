@@ -9,6 +9,13 @@ public class UserData {
 	int tatalPage;
 	int currentPage;
 	int pageSize;
+	String searchContent;
+	public String getSearchContent() {
+		return searchContent;
+	}
+	public void setSearchContent(String searchContent) {
+		this.searchContent = searchContent;
+	}
 	public ArrayList<UserDto> getUserDto() {
 		return userDto;
 	}

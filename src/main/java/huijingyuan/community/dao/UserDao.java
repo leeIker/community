@@ -20,6 +20,7 @@ public interface UserDao {
 	public UserDto queryUserByToken(String token);
 	@Select("select count(1) from user")
 	public int queryCount();
-	@Select("select * from user limit #{page},#{pageSize}")
-	public ArrayList<UserDto> queryUserByPage(int page,int pageSize);
+	@Select("select * from user where name like #{content}  limit #{page},#{pageSize}")
+	public ArrayList<UserDto> queryUserByPage(String content,int page,int pageSize);
+	
 }
