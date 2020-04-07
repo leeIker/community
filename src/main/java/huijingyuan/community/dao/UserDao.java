@@ -22,5 +22,7 @@ public interface UserDao {
 	public int queryCount();
 	@Select("select * from user where name like #{content}  limit #{page},#{pageSize}")
 	public ArrayList<UserDto> queryUserByPage(String content,int page,int pageSize);
+	@Select("select * from user where id = #{id}")
+	public UserDto queryUserById(int id);
 	
 }

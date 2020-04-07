@@ -67,10 +67,10 @@ public class UserController {
 		return new ResponseEntity(userDataTwo,HttpStatus.OK);
 	}
 	
-	@RequestMapping("queryUserBySearch{content}")
-	public ResponseEntity queryYserBySearch(@PathVariable(value="content") String content) {
-		
-		return null;
+	@RequestMapping("queryUserById/{id}")
+	public ResponseEntity queryYserBySearch(@PathVariable(value="id") int id) {
+		UserDto userDto= userDao.queryUserById(id);
+		return new ResponseEntity(userDto,HttpStatus.OK);
 	}
 	
 	
