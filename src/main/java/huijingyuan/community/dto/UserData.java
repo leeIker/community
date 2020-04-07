@@ -9,7 +9,7 @@ public class UserData {
 	int tatalPage;
 	int currentPage;
 	int pageSize;
-	String searchContent;
+	String searchContent="";
 	public String getSearchContent() {
 		return searchContent;
 	}
