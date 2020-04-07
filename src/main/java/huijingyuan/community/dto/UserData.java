@@ -46,4 +46,9 @@ public class UserData {
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
+	@Override
+	public String toString() {
+		return "UserData [userDto=" + userDto + ", totalCount=" + totalCount + ", tatalPage=" + tatalPage
+				+ ", currentPage=" + currentPage + ", pageSize=" + pageSize + ", searchContent=" + searchContent + "]";
+	}
 }
