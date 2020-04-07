@@ -42,7 +42,6 @@ public class UserController {
 		UserDto userDtoTwo =userDao.queryUser(userDto);
 		if(userDtoTwo!=null) {
 			ResponseEntity rn= new ResponseEntity(userDtoTwo,HttpStatus.OK);
-			System.out.println(userDtoTwo);
 			return  rn;
 		}
 		ResponseEntity rn= new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -52,7 +51,6 @@ public class UserController {
 	public ResponseEntity queryAllUser(@RequestHeader HttpHeaders header){
 			List<String> connection= header.get("Authorization");
 		    String token=connection.get(0);
-		    System.out.println(token);
 		    if(token==null) {
 		    	return new ResponseEntity(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
 		    }
@@ -62,7 +60,6 @@ public class UserController {
 	}
 	@RequestMapping("queryUserByPage")
 	public ResponseEntity queryUserByPage(@RequestBody UserData userData) {
-		System.out.println(userData);
 		UserData userDataTwo= userService.queryAll(userData.getSearchContent(),userData.getCurrentPage(),userData.getPageSize());
 		return new ResponseEntity(userDataTwo,HttpStatus.OK);
 	}
@@ -74,6 +71,7 @@ public class UserController {
 	}
 	@RequestMapping("updateUser")
 	public ResponseEntity updateUser(@RequestBody UserDto userDto) {
+		System.out.println(userDto);
 		int i= userDao.updataUser(userDto);	
 		if(i>0) {
 			return new ResponseEntity(HttpStatus.OK);

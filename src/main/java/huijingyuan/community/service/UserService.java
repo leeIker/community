@@ -51,7 +51,6 @@ public class UserService {
 		}else {
 			userData.setTatalPage(totalCount/pageSize+1);
 		}
-		System.out.println(userData);
 		return userData;
 	}
 	

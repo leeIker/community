@@ -26,5 +26,5 @@ public interface UserDao {
 	@Select("select * from user where id = #{id}")
 	public UserDto queryUserById(int id);
 	@Update("update user set name= #{name},password= #{password} where id = #{id})")
-	public int updataUser(UserDto userDate);
+	public int updataUser(UserDto userDto);
 }
