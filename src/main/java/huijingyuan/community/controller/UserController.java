@@ -29,7 +29,7 @@ public class UserController {
 	UserDao userDao;
 	@ResponseBody
 	@RequestMapping("register")
-	public UserDto register(UserDto userDto) {
+	public UserDto register(@RequestBody UserDto userDto) {
 		String userToken=UUID.randomUUID().toString();
 		UserDto userDtoTwo=userService.addInfo(userDto, userToken);
 		if(userDtoTwo!=null) {
