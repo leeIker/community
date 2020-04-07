@@ -25,6 +25,6 @@ public interface UserDao {
 	public ArrayList<UserDto> queryUserByPage(String content,int page,int pageSize);
 	@Select("select * from user where id = #{id}")
 	public UserDto queryUserById(int id);
-	@Update("update user set name= #{name},password= #{password} where id = '#{id}')")
+	@Update("update user set name= #{name},password= #{password} where id = #{id}")
 	public int updataUser(UserDto userDto);
 }
