@@ -72,6 +72,14 @@ public class UserController {
 		UserDto userDto= userDao.queryUserById(id);
 		return new ResponseEntity(userDto,HttpStatus.OK);
 	}
+	@RequestMapping("updateUser")
+	public ResponseEntity updateUser(@RequestBody UserDto userDto) {
+		int i= userDao.updataUser(userDto);	
+		if(i>0) {
+			return new ResponseEntity(HttpStatus.OK);
+		}
+		return new ResponseEntity(HttpStatus.NOT_FOUND);
+	}
 	
 	
 	

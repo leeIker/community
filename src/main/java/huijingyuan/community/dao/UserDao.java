@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import huijingyuan.community.dto.UserDto;
 
@@ -24,5 +25,6 @@ public interface UserDao {
 	public ArrayList<UserDto> queryUserByPage(String content,int page,int pageSize);
 	@Select("select * from user where id = #{id}")
 	public UserDto queryUserById(int id);
-	
+	@Update("update user set (name,password) values(#{name},#{password} where id = #{id})")
+	public int updataUser(UserDto userDate);
 }
