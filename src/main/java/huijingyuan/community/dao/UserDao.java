@@ -2,6 +2,7 @@ package huijingyuan.community.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -27,4 +28,6 @@ public interface UserDao {
 	public UserDto queryUserById(int id);
 	@Update("update user set name= #{name},password= #{password} where id = #{id}")
 	public int updataUser(UserDto userDto);
+	@Delete("delete from user where id =#{id}")
+	public int deleteUserById(int id);
 }

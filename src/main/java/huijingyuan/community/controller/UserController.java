@@ -71,12 +71,19 @@ public class UserController {
 	}
 	@RequestMapping("updateUser")
 	public ResponseEntity updateUser(@RequestBody UserDto userDto) {
-		System.out.println(userDto);
 		int i= userDao.updataUser(userDto);	
 		if(i>0) {
 			return new ResponseEntity(HttpStatus.OK);
 		}
 		return new ResponseEntity(HttpStatus.NOT_FOUND);
+	}
+	@RequestMapping("deleteUserById/{id}")
+	public ResponseEntity deleteUserById(@PathVariable(value="id") int id) {
+		int i= userDao.deleteUserById(id);
+		if(i>0) {
+			return new ResponseEntity(HttpStatus.OK);
+		}
+		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}
 	
 	
