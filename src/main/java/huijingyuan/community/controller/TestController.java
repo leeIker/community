@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import huijingyuan.community.dao.FirstPrivilegeDao;
 import huijingyuan.community.dao.RolePrivilegeDao;
+import huijingyuan.community.model.FirstPrivilegeModel;
 import huijingyuan.community.model.RolePrivilegeModel;
 import huijingyuan.community.service.RoleService;
 
@@ -18,6 +20,9 @@ public class TestController {
 	private RoleService rs;
 	@Autowired
 	private RolePrivilegeDao rpd;
+	
+	@Autowired
+	private FirstPrivilegeDao fpd;
 	
 	@ResponseBody
 	@RequestMapping("queryAllRolePrivilege")
@@ -32,4 +37,11 @@ public class TestController {
 		return i;
 	}
 	
+	@ResponseBody
+	@RequestMapping("insertFirstPrivilege")
+	public int insertFirstPrivilege(FirstPrivilegeModel fpm) {
+		System.out.println(fpm);
+		int i= fpd.addFirstPrivilege(fpm);
+		return i;
+	}
 }
