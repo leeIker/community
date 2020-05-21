@@ -14,7 +14,7 @@ public interface RolePrivilegeDao {
 	ArrayList<RolePrivilegeModel> queryAllRole();
 	
 	@Insert("insert into role_privilege (name)values(#{name})")
-	int addRole(RolePrivilegeModel rp);
+	int addRole(String name);
 }
 
 

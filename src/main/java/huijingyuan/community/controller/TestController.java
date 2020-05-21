@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,9 +26,9 @@ public class TestController {
 		return list;
 	}
 	@ResponseBody
-	@RequestMapping("insertRole")
-	public int InsertRole(RolePrivilegeModel rpm) {
-		int i= rpd.addRole(rpm);
+	@RequestMapping("insertRole/{name}")
+	public int InsertRole(@PathVariable("name") String name) {
+		int i= rpd.addRole(name);
 		return i;
 	}
 	
