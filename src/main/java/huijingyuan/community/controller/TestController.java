@@ -53,13 +53,14 @@ public class TestController {
 	
 	@ResponseBody
 	@RequestMapping("deleteRole/{id}")
-	public int deleteRole(@PathVariable int id_role) {
+	public int deleteRole(@PathVariable("id") int id_role) {
 		int i=rpd.deleteRole(id_role);
 		return i;
 	}
 	@ResponseBody
 	@RequestMapping("addBasePrivilege")
 	public int addBasePrivilege(@RequestBody BasePrivilegeModel bpm) {
+		System.out.println(bpm);
 		int i= bpd.addBasePrivilege(bpm);
 		return i;
 	}

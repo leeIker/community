@@ -30,4 +30,9 @@ public class BasePrivilegeModel {
 	public void setUse(boolean isUse) {
 		this.isUse = isUse;
 	}
+	@Override
+	public String toString() {
+		return "BasePrivilegeModel [id=" + id + ", idFirstPrivilege=" + idFirstPrivilege + ", name=" + name + ", isUse="
+				+ isUse + "]";
+	}
 }
