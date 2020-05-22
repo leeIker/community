@@ -2,8 +2,16 @@ package huijingyuan.community.model;
 
 public class BasePrivilegeModel {
 	private int id;
+	private int idFirstPrivilege;
 	private String name;
 	private boolean isUse;
+	
+	public int getIdFirstPrivilege() {
+		return idFirstPrivilege;
+	}
+	public void setIdFirstPrivilege(int idFirstPrivilege) {
+		this.idFirstPrivilege = idFirstPrivilege;
+	}
 	public int getId() {
 		return id;
 	}
