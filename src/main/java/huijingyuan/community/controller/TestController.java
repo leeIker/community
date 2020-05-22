@@ -54,6 +54,7 @@ public class TestController {
 	@ResponseBody
 	@RequestMapping("deleteRole/{id}")
 	public int deleteRole(@PathVariable("id") int id_role) {
+		System.out.println(id_role);
 		int i=rpd.deleteRole(id_role);
 		return i;
 	}
