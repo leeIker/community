@@ -65,4 +65,11 @@ public class TestController {
 		int i= bpd.addBasePrivilege(bpm);
 		return i;
 	}
+	
+	@ResponseBody
+	@RequestMapping("deleteBasePrivilege/{id}")
+	public int deleteBasePrivilege(@PathVariable int id) {
+		int i= bpd.deletePrivilege(id);
+		return i;
+	}
 }
