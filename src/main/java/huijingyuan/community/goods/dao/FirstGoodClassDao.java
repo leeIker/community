@@ -11,7 +11,7 @@ import huijingyuan.community.goods.model.FirstGoodClass;
 @Mapper
 public interface FirstGoodClassDao {
 	@Insert("insert into first_good_class(name) values (#{name})")
-	int insertFirstGoodClass(FirstGoodClass fgc);
+	int insertFirstGoodClass(String name);
 	
 	@Select("select id_first as id ,name from first_good_class")
 	ArrayList<FirstGoodClass> queryAllFrist();

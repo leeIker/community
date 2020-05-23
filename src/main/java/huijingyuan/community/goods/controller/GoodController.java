@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,9 +34,9 @@ public class GoodController {
 	private GoodService gs;
 	
 	@ResponseBody
-	@RequestMapping("insertFirst")
-	public int InsertFirstGoodClass(FirstGoodClass fgc) {
-		int i = fgcd.insertFirstGoodClass(fgc);
+	@RequestMapping("insertFirst/{name}")
+	public int InsertFirstGoodClass(@PathVariable("name") String name) {
+		int i = fgcd.insertFirstGoodClass(name);
 		return i;
 	}
 	
@@ -47,27 +49,27 @@ public class GoodController {
 	
 	@ResponseBody
 	@RequestMapping("insertSecond")
-	public int insertSecondGoodClass(SecondGoodClass sgc) {
+	public int insertSecondGoodClass(@RequestBody SecondGoodClass sgc) {
 		int i = sgcd.insertSecond(sgc);
 		return i;
 	}
 	@ResponseBody
-	@RequestMapping("querySecondByIdfirst")
-	public ArrayList<SecondGoodClass> querySecondByIdfirst(@RequestParam("id") int id){
+	@RequestMapping("querySecondByIdfirst{id}")
+	public ArrayList<SecondGoodClass> querySecondByIdfirst(@PathVariable("id") int id){
 		ArrayList<SecondGoodClass> list=sgcd.querySeconByIdFirst(id);
 		return list;
 	}
 	
 	@ResponseBody
 	@RequestMapping("insertBase")
-	public int insertBase(BaseGoodClass bgc) {
+	public int insertBase(@RequestBody BaseGoodClass bgc) {
 		int i= bgcd.insertBase(bgc);
 		return i;
 	}
 	
 	@ResponseBody
-	@RequestMapping("queryBaseByIdsecond")
-	public ArrayList<BaseGoodClass> queryBaseByIdsecond(@RequestParam("id") int id_second){
+	@RequestMapping("queryBaseByIdsecond{id}")
+	public ArrayList<BaseGoodClass> queryBaseByIdsecond(@PathVariable("id") int id_second){
 		ArrayList<BaseGoodClass> list=bgcd.queryBaseGoodClassByIdsecond(id_second);
 		return list;
 	}
