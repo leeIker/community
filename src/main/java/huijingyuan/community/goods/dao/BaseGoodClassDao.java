@@ -13,6 +13,6 @@ public interface BaseGoodClassDao {
 	@Insert("insert into base_good_class (id_second,name) values(#{id_second},#{name})")
 	int insertBase(BaseGoodClass bgc);
 	
-	@Select("select * from base_good_class where id_second =#{idsecond}")
+	@Select("select id_base as id, name from base_good_class where id_second =#{idsecond}")
 	ArrayList<BaseGoodClass> queryBaseGoodClassByIdsecond(int idsecond);
 }
